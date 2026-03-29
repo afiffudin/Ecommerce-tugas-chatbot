@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pembelian</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      Form Pembelian
+    </div>
+    <div class="card-body">
+      <form method="POST">
+        <select name="produk_id" class="form-select mb-3">
+          <% produk.forEach(p => { %>
+            <option value="<%= p.id %>">
+              <%= p.nama_produk %> - Rp <%= p.harga %>
+            </option>
+          <% }) %>
+        </select>
+
+        <input type="number" name="jumlah" class="form-control mb-3" placeholder="Jumlah" required>
+        <button class="btn btn-success w-100">Simpan</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<% if (query.success) { %>
+<script>
+Swal.fire({
+  icon: 'success',
+  title: 'Berhasil',
+  text: 'Pembelian berhasil disimpan!'
+})
+</script>
+<% } %>
+
+</body>
+</html>
